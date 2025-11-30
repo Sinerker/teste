@@ -1,0 +1,161 @@
+/* -------------------------------------------------------------
+   Reset básico
+-------------------------------------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f5f6fa;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+/* -------------------------------------------------------------
+   Botões
+-------------------------------------------------------------*/
+button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.1);
+}
+
+#botao-tela-cheia {
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  color: white;
+  margin-bottom: 1rem;
+}
+
+#botao-tela-cheia:hover {
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.15);
+}
+
+#botao-exportar-contagens {
+  background: linear-gradient(135deg, #00b894, #55efc4);
+  color: white;
+  margin-top: 1rem;
+}
+
+#botao-exportar-contagens:hover {
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.15);
+}
+
+/* -------------------------------------------------------------
+   Radios Loja e Depósito
+-------------------------------------------------------------*/
+#selecao-tipo {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+  align-items: center;
+}
+
+#selecao-tipo label {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* -------------------------------------------------------------
+   Campos de entrada e selects
+-------------------------------------------------------------*/
+.campo {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.8rem;
+  width: 100%;
+  max-width: 30rem;
+}
+
+.campo label {
+  font-weight: 500;
+  min-width: 4.5rem;
+  font-size: 0.9rem;
+}
+
+/* Inputs que ocupam todo espaço disponível */
+.campo input[type="text"].expandido,
+.campo input[type="number"].expandido,
+.campo select {
+  flex: 1;
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.3rem;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+
+/* Coluna e Andar lado a lado */
+.campo-coluna-andar {
+  display: flex;
+  gap: 0.3rem;
+  width: 100%;
+  max-width: 30rem;
+}
+
+.campo-coluna-andar .coluna-andar {
+  display: flex;
+  flex-direction: column; /* label acima do select */
+  flex: 1;
+  gap: 0.2rem;
+}
+
+.campo-codigo-produto {
+  display: flex;
+  flex-direction: column; /* Label acima do input */
+  gap: 0.2rem; /* pequeno espaçamento entre label e input */
+}
+
+/* Campo quantidade e checkbox Qtde1 */
+.campo-quantidade {
+  display: flex;
+  width: 100%;
+  max-width: 30rem;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.campo-quantidade .quantidade-campo {
+  flex: 0 0 70%;
+  display: flex;
+  flex-direction: column; /* label acima do input */
+  gap: 0.2rem;
+}
+
+.campo-quantidade .qtde1 {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; /* centraliza verticalmente */
+  gap: 0.3rem;
+}
+
+.campo-quantidade input[type="checkbox"] {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* Inputs padrão */
+input[type="text"],
+input[type="number"],
+select {
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.3rem;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  width: 100%;
+}
