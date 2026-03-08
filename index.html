@@ -1,28 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>App Inventário</title>
+    <title>Inventário • Lotes</title>
+    <link rel="icon" href="iconInventario.png" type="image/png" />
     <link rel="stylesheet" href="./style.css" />
   </head>
-
   <body>
-    <div class="app-wrapper">
-      <header>
-        <div class="header-top">
-          <div class="usuario-loja-group">
-            <label for="usuario">Usuário:</label>
+    <main class="layout">
+      <header class="hero">
+        <h1>Inventário</h1>
+        <p>Selecione usuário, loja e categorias para criar um lote.</p>
+      </header>
+
+      <section class="panel">
+        <div class="grid two-cols">
+          <label class="field">
+            <span>Usuário</span>
             <select id="usuario" name="usuario">
               <option value="Alex">Alex</option>
               <option value="João">João</option>
               <option value="Luciano">Luciano</option>
               <option value="Moseley">Moseley</option>
             </select>
-          </div>
+          </label>
 
-          <div class="usuario-loja-group">
-            <label for="loja">Loja:</label>
+          <label class="field">
+            <span>Loja</span>
             <select id="loja" name="loja">
               <option value="001-DZ9">001-DZ9</option>
               <option value="002-VICENTE">002-VICENTE</option>
@@ -56,32 +61,35 @@
               <option value="318-KENNEDY">318-KENNEDY</option>
               <option value="319-SFELIC">319-SFELIC</option>
               <option value="320-CARA-CARA">320-CARA-CARA</option>
-              <option value="321-ROTTA-BOEING">321-ROTTA-BOEING</option>
               <option value="398-PALMEIRA">398-PALMEIRA</option>
             </select>
-          </div>
+          </label>
         </div>
-
-        <div class="nome-lote-group">
-          <label for="nome-lote">Nome do Lote:</label>
-          <input
-            type="text"
-            id="nome-lote"
-            name="nome-lote"
-            placeholder="Detalhes do lote!"
-          />
-        </div>
-      </header>
-
-      <section id="categorias">
-        <h2>Selecione uma Categoria</h2>
-        <div id="container-arvore"></div>
       </section>
 
-      <button id="criar-lote">Criar Lote</button>
+      <section id="tree-container" class="panel">
+        <h2>Categorias</h2>
+        <p class="muted">Carregando categorias...</p>
+      </section>
 
-      <script src="./script.js"></script>
-      <script src="./lote.js"></script>
-    </div>
+      <section class="panel actions">
+        <button id="criar-lote" class="btn primary">Criar Lote</button>
+        <a href="./contagens.html" id="continuar-contagens" class="btn">Continuar Contagens</a>
+        <button id="limpar-banco" class="btn danger">Limpar Banco</button>
+      </section>
+    </main>
+
+    <dialog id="confirm-modal" class="confirm-dialog">
+      <form method="dialog" class="confirm-content">
+        <h3 id="modal-title">Confirmação</h3>
+        <p id="modal-message">Tem certeza?</p>
+        <menu>
+          <button value="cancel" class="btn">Cancelar</button>
+          <button value="confirm" id="confirm-yes" class="btn danger">Confirmar</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <script type="module" src="./src/index-page.js"></script>
   </body>
 </html>

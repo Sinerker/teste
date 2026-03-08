@@ -1,445 +1,213 @@
-/* -------------------------------------------------------------
-   Layout geral da página — visual moderno e centralizado
---------------------------------------------------------------*/
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f2f4f7;
-  color: #333;
+:root {
+  --bg: #f3f5fb;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #dbe2ee;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --danger: #dc2626;
+  --radius: 12px;
+  --shadow: 0 10px 35px rgba(15, 23, 42, 0.09);
 }
 
-.app-wrapper {
-  width: 100%;
-  max-width: 1200px; /* controla largura máxima */
-  margin: 0 auto;
-  padding: 0 5px; /* espaço lateral no celular */
+* {
   box-sizing: border-box;
 }
 
-/* -------------------------------------------------------------
-   Cabeçalho — barra superior estilizada
---------------------------------------------------------------*/
-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  padding: 18px 15px;
-  background: #ffffff;
-  border-bottom: 1px solid #dcdfe3;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+body {
+  margin: 0;
+  font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: linear-gradient(180deg, #edf2ff 0%, var(--bg) 100%);
+  min-height: 100vh;
 }
 
-.header-top {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
+.layout {
+  width: min(1100px, 100% - 2rem);
+  margin: 2rem auto;
+  display: grid;
+  gap: 1rem;
 }
 
-/* Usuário e Loja */
-.usuario-loja-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 600;
+.hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
 }
 
-.usuario-loja-group select {
-  padding: 7px;
-  border-radius: 6px;
-  border: 1px solid #cccccc;
-  background: #fafafa;
-  font-size: 14px;
+.hero h1 {
+  margin: 0;
+  font-size: 1.8rem;
 }
 
-/* -------------------------------------------------------------
-   Nome do Lote — NOVO BLOCO
---------------------------------------------------------------*/
-.nome-lote-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 5px;
-  width: 100%;
+.hero p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
 }
 
-.nome-lote-group label {
-  font-weight: 600;
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 4px;
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow);
 }
 
-.nome-lote-group input {
-  width: 220px;
-  padding: 7px 10px;
-  border: 1px solid #cccccc;
-  border-radius: 6px;
-  background: #fafafa;
-  font-size: 14px;
-  text-align: center;
-  transition: 0.2s border-color;
+.grid {
+  display: grid;
+  gap: 1rem;
 }
 
-.nome-lote-group input:focus {
-  border-color: #007bff;
-  outline: none;
-  background: #ffffff;
+.two-cols {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-/* -------------------------------------------------------------
-   Seção principal
---------------------------------------------------------------*/
-#categorias {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  max-width: 850px;
-  margin-top: 20px;
+.field {
+  display: grid;
+  gap: 0.4rem;
 }
 
-#categorias h2 {
-  font-size: 22px;
+.field span {
+  font-size: 0.9rem;
   font-weight: 700;
-  color: #333;
 }
 
-/* -------------------------------------------------------------
-   Contêiner da árvore
---------------------------------------------------------------*/
-#container-arvore {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 95%;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+.field select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  font-size: 1rem;
+  background: white;
 }
 
-/* -------------------------------------------------------------
-   Estilo da árvore (UL principal)
---------------------------------------------------------------*/
-#container-arvore ul {
-  list-style: none;
-  padding-left: 22px;
+h2 {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
 }
 
-/* -------------------------------------------------------------
-   Nó da árvore
---------------------------------------------------------------*/
-.no-arvore {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 4px 0;
-  border-radius: 6px;
+.muted {
+  color: var(--muted);
+  margin: 0.35rem 0 0;
 }
 
-.no-arvore:hover > .cabecalho-no {
-  background: #f7f9fc;
-  border-radius: 6px;
+.tree-root,
+.tree-children {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
 }
 
-/* -------------------------------------------------------------
-   Cabeçalho do nó
---------------------------------------------------------------*/
-.cabecalho-no {
+.tree-children {
+  margin-left: 1.5rem;
+}
+
+.tree-row {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 4px 6px;
-  transition: background 0.2s;
-  white-space: nowrap;
-  cursor: pointer;
+  gap: 0.4rem;
+  padding: 0.22rem 0;
 }
 
-/* -------------------------------------------------------------
-   Ícone (toggle)
---------------------------------------------------------------*/
-.toggle-no {
-  cursor: pointer;
-  user-select: none;
-  font-weight: bold;
-  width: 16px;
-  display: flex;
-  justify-content: center;
-  color: #4a4a4a;
-  transition: transform 0.2s ease, color 0.3s;
-}
-
-.toggle-no:hover {
-  color: #007bff;
-  transform: scale(1.15);
-}
-
-/* -------------------------------------------------------------
-   Checkbox
---------------------------------------------------------------*/
-.checkbox-arvore {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-/* -------------------------------------------------------------
-   Subcategorias com suave indentação
---------------------------------------------------------------*/
-.filhos-arvore {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding-left: 20px;
-  border-left: 2px solid #e1e4e8;
-  margin-left: 8px;
-}
-
-/* -------------------------------------------------------------
-   Botão Criar Lote — moderno
---------------------------------------------------------------*/
-#criar-lote {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 25px auto;
-  padding: 12px 25px;
-  background: linear-gradient(135deg, #007bff, #0062d6);
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
+.tree-toggle {
+  width: 1.6rem;
   border: none;
-  font-size: 17px;
-  font-weight: 600;
-  transition: 0.25s;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+  background: transparent;
+  color: #334155;
+  cursor: pointer;
 }
 
-#criar-lote:hover {
-  background: linear-gradient(135deg, #006ff0, #0054c1);
-  transform: translateY(-2px);
-}
-
-#criar-lote:active {
-  transform: translateY(0);
-}
-
-/* -------------------------------------------------------------
-   Lista de Lotes
---------------------------------------------------------------*/
-#lista-lotes {
+.tree-label {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 15px;
-  font-family: Arial, sans-serif;
-}
-
-#lista-lotes ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-#lista-lotes li {
-  display: flex;
-  justify-content: space-between;
+  gap: 0.45rem;
   align-items: center;
-  background-color: #f9f9f9;
-  padding: 10px 15px;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-#lista-lotes li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-#lista-lotes li span {
-  font-weight: bold;
-  color: #333;
-  word-break: break-word;
-}
-
-.lote-nome {
+.actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.75rem;
 }
 
-.lote-nome span {
-  background-color: #e0e0e0;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-weight: normal;
-  font-size: 0.9em;
-}
-
-/* Botão excluir */
-#lista-lotes button {
-  background-color: #ff4d4f;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 6px 12px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-#lista-lotes button:hover {
-  background-color: #d9363e;
-}
-
-/* -------------------------------------------------------------
-   Modal — fundo escuro translúcido
---------------------------------------------------------------*/
-.modal-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  animation: fadeIn 0.25s ease-out;
-}
-
-/* -------------------------------------------------------------
-   Caixa do Modal
---------------------------------------------------------------*/
-.modal-box {
-  background-color: #fff;
-  padding: 30px 25px;
-  border-radius: 16px;
-  max-width: 420px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  transform: translateY(-20px);
-  animation: slideDown 0.35s ease-out forwards;
-}
-
-.modal-box p {
-  font-size: 1.05em;
-  color: #333;
-  margin-bottom: 25px;
-}
-
-/* Botões */
-.modal-box button {
-  padding: 10px 20px;
-  margin: 0 8px;
-  border: none;
+.btn {
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  color: #0f172a;
   border-radius: 10px;
+  padding: 0.65rem 1rem;
+  font-weight: 700;
+  text-decoration: none;
   cursor: pointer;
-  font-weight: 600;
-  font-size: 0.95em;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.modal-box button.sim {
-  background: linear-gradient(135deg, #1890ff, #096dd9);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.4);
-}
-
-.modal-box button.sim:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(24, 144, 255, 0.5);
-}
-
-.modal-box button.nao {
-  background-color: #f5f5f5;
-  color: #555;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.modal-box button.nao:hover {
-  background-color: #e6e6e6;
-  transform: translateY(-1px);
-}
-
-/* -------------------------------------------------------------
-   Lista de Lotes — estilo melhorado
---------------------------------------------------------------*/
-.item-lote {
-  display: flex;
-  justify-content: space-between;
+  display: inline-flex;
   align-items: center;
-  padding: 12px 18px;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
+  justify-content: center;
 }
 
-.item-lote:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+.btn.primary {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
 }
 
-/* Texto principal do lote */
-.lote-nome {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.btn.primary:hover {
+  background: var(--primary-dark);
 }
 
-/* Nome do lote em destaque */
-.lote-nome strong {
-  font-size: 1.15em;
-  color: #007bff;
+.btn.danger {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: white;
 }
 
-/* Detalhes de usuário e loja */
-.lote-info {
-  font-size: 0.95em;
-  color: #555;
-}
-
-/* Data de criação em fonte menor e cinza */
-.lote-data {
-  font-size: 0.85em;
-  color: #888;
-}
-
-/* Botão excluir */
-.btn-excluir-lote {
-  background-color: #ff4d4f;
-  color: #fff;
+.confirm-dialog {
   border: none;
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 0.9em;
-  transition: background-color 0.2s;
+  border-radius: 12px;
+  width: min(460px, 92vw);
+  padding: 0;
 }
 
-.btn-excluir-lote:hover {
-  background-color: #d9363e;
+.confirm-content {
+  margin: 0;
+  padding: 1rem;
+}
+
+.confirm-content h3 {
+  margin: 0;
+}
+
+.confirm-content p {
+  color: var(--muted);
+}
+
+.confirm-content menu {
+  margin: 1rem 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.toast {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: #0f172a;
+  color: white;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.toast.hide {
+  opacity: 0;
+}
+
+@media (max-width: 760px) {
+  .two-cols {
+    grid-template-columns: 1fr;
+  }
 }

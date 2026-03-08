@@ -1,126 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contagens</title>
-    <link rel="stylesheet" href="./contagens.css" />
+    <title>Inventário • Contagens</title>
+    <link rel="stylesheet" href="./style-contagens.css" />
   </head>
   <body>
-    <button id="botao-tela-cheia">Tela Cheia</button>
+    <main class="contagens-layout">
+      <header class="contagens-header">
+        <h1>Contagens</h1>
+        <div class="header-actions">
+          <button id="fullscreen-btn" class="btn">Tela cheia</button>
+          <button id="exportar-contagens" class="btn primary">Exportar contagens</button>
+        </div>
+      </header>
 
-    <div id="selecao-tipo">
-      <label
-        ><input type="radio" name="tipo-local" value="loja" checked />
-        Loja</label
-      >
-      <label
-        ><input type="radio" name="tipo-local" value="deposito" />
-        Depósito</label
-      >
-    </div>
+      <section class="card">
+        <div class="radio-group">
+          <label><input type="radio" name="tipo-contagem" value="loja" checked /> Loja</label>
+          <label><input type="radio" name="tipo-contagem" value="deposito" /> Depósito</label>
+        </div>
 
-    <div class="campo">
-      <label for="corredor">Corredor:</label>
-      <input type="text" id="corredor" class="expandido" />
-    </div>
+        <div class="grid cols-3">
+          <label class="field">
+            <span>Corredor</span>
+            <input type="text" id="corredor" placeholder="Ex.: A1" />
+          </label>
+          <label class="field">
+            <span>Coluna</span>
+            <select id="coluna"></select>
+          </label>
+          <label class="field">
+            <span>Andar</span>
+            <select id="andar"></select>
+          </label>
+        </div>
 
-    <div class="campo-coluna-andar">
-      <div class="campo coluna-andar">
-        <label for="coluna">Coluna:</label>
-        <select id="coluna">
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
-          <option value="D">D</option>
-          <option value="E">E</option>
-          <option value="F">F</option>
-          <option value="G">G</option>
-          <option value="H">H</option>
-          <option value="I">I</option>
-          <option value="J">J</option>
-          <option value="K">K</option>
-          <option value="L">L</option>
-          <option value="M">M</option>
-          <option value="N">N</option>
-          <option value="O">O</option>
-          <option value="P">P</option>
-          <option value="Q">Q</option>
-          <option value="R">R</option>
-          <option value="S">S</option>
-          <option value="T">T</option>
-          <option value="U">U</option>
-          <option value="V">V</option>
-          <option value="W">W</option>
-          <option value="X">X</option>
-          <option value="Y">Y</option>
-          <option value="Z">Z</option>
-        </select>
-      </div>
-      <div class="campo coluna-andar">
-        <label for="andar">Andar:</label>
-        <select id="andar">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option value="14">14</option>
-          <option value="15">15</option>
-          <option value="16">16</option>
-          <option value="17">17</option>
-          <option value="18">18</option>
-          <option value="19">19</option>
-          <option value="20">20</option>
-        </select>
-      </div>
-    </div>
+        <label class="field">
+          <span>Digite o código ou nome do produto</span>
+          <input type="text" id="codigo" placeholder="Código ou descrição" enterkeyhint="enter" />
+        </label>
 
-    <div class="campo campo-codigo-produto">
-      <label for="codigo-produto">Digite o código ou nome do produto:</label>
-      <input
-        type="text"
-        id="codigo-produto"
-        class="expandido"
-        enterkeyhint="enter"
-      />
-    </div>
+        <section id="resultado" class="resultado"></section>
 
-    <div id="info-produto"></div>
+        <div id="quantidade-bloco" class="grid cols-2 align-end">
+          <label class="field">
+            <span>Quantidade</span>
+            <input type="number" id="quantidade" step="any" placeholder="Digite a quantidade" enterkeyhint="enter" />
+          </label>
+          <label class="qtde1-toggle">
+            <input type="checkbox" id="qtde1" />
+            <span>Qtde 1</span>
+          </label>
+        </div>
 
-    <div class="campo-quantidade">
-      <div class="campo quantidade-campo">
-        <label for="quantidade">Digite a quantidade:</label>
-        <input type="number" id="quantidade" />
-      </div>
-      <div class="qtde1">
-        <label for="checkbox-qtde1">Qtde1:</label>
-        <input type="checkbox" id="checkbox-qtde1" />
-      </div>
-    </div>
+        <section id="ultimo-contado" class="ultimo-contado" hidden></section>
+      </section>
+    </main>
 
-    <div id="ultimo-produto"></div>
-
-    <button id="botao-exportar-contagens">Exportar Contagens</button>
-    <button id="botao-ver-contagens">Ver Contagens Salvas</button>
-
-    <div id="modal-contagens" class="modal-contagens">
-      <div class="modal-conteudo">
-        <button id="fechar-modal" class="fechar-modal">X</button>
-        <h3>Contagens Salvas</h3>
-        <div id="lista-contagens"></div>
-      </div>
-    </div>
-
-    <script src="./contagens.js"></script>
-    <script src="./exportar-contagens.js"></script>
+    <script type="module" src="./src/contagens-page.js"></script>
   </body>
 </html>
